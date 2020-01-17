@@ -1,0 +1,7 @@
+matrix:
+  include:
+    - language: php
+      python: 7.2
+      script:
+        - composer --ansi validate --no-check-publish
+        - composer install --no-progress --prefer-dist
