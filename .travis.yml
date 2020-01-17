@@ -5,3 +5,9 @@ matrix:
       script:
         - composer --ansi validate --no-check-publish
         - composer install --no-progress --prefer-dist
+
+    - services: docker
+      script:
+        - docker-compose up -d
+        - curl --silent localhost:8000/wudele/admin/ |grep --quiet "<title>Administration - Framadate</title>"
+        - docker-compose down
