@@ -1,0 +1,22 @@
+- name: Alter get_server_name to avoid wrong port detection
+  lineinfile:
+    path: "{{ app_path }}/app/classes/Framadate/Utils.php"
+    state: present
+    regexp: '^(\s+\$port\s+=)'
+    line: \1 '';
+    backrefs: yes
+    validate: php -l %s
+  tags:
+    - patch
+
+- name: Patch create_date_poll for e-mail subject
+  replace:
+    path: "{{ app_path }}/create_date_poll.php"
+    regexp: '{{ item.regexp }}'
+    replace: '{{ item.replace }}'
+    validate: php -l %s
+  with_items:
+    - {regexp: "Message for the author", replace: "Author\\'s message" }
+    - {regexp: "Participant link", replace: "For sending to the polled users" }
+  tags:
+    - patch

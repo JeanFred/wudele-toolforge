@@ -1,0 +1,96 @@
+---
+- hosts: toolforge
+  gather_facts: no
+
+  vars:
+    tool_name: wudele
+    base_path: "/data/project/{{ tool_name }}"
+    logs_path: "{{ base_path }}/logs"
+    src_path: "{{ base_path }}/src"
+    app_path: "{{ src_path }}/vendor/framasoft/framadate"
+    venv_path: "{{ base_path }}/.venv/"
+    database_config_file: '{{ base_path }}/replica.my.cnf'
+
+  handlers:
+    - name: Restart webservice
+      command: >
+        webservice restart
+
+    - name: Ensure web interface is available
+      uri:
+        url: "https://tools.wmflabs.org/{{ tool_name }}"
+      register: _result
+      until: _result.status == 200
+      retries: 12
+      delay: 10
+      delegate_to: localhost
+      become: no
+      listen:
+        - Restart webservice
+        - Ensure webservice is started
+
+  tasks:
+    - name: Create paths
+      file:
+        path: '{{ src_path }}'
+        state: directory
+      tags:
+        - paths
+
+    - include: tasks/database.yml
+
+    - include: tasks/dependencies.yml
+
+    - name: Deploy custom application files
+      template:
+        src: "files/{{ item.src }}"
+        dest: "{{ item.dest }}"
+        validate: php -l %s
+      with_items:
+        - {src: 'variables.php.j2', dest: "{{ app_path }}/app/inc/variables.php"}
+        - {src: 'config.php', dest: "{{ app_path }}/app/inc/config.php"}
+        - {src: 'MailService.php', dest: "{{ app_path }}/app/classes/Framadate/Services/MailService.php"}
+      notify:
+        - Restart webservice
+      tags:
+        - app
+        - config
+
+    - include: tasks/patch.yml
+
+    - name: Deploy custom static files
+      copy:
+        src: "files/{{ item.src }}"
+        dest: "{{ item.dest }}"
+      with_items:
+        - {src: 'logo-wudele.png', dest: "{{ app_path }}/images/"}
+
+    - include: tasks/webserver.yml
+
+    - name: Symlink src directory
+      file:
+        src: '{{ app_path }}'
+        path: '{{ base_path }}/public_html'
+        state: link
+      tags:
+        - paths
+
+    - name: Symlink logs directory
+      file:
+        src: '{{ logs_path }}'
+        path: '{{ app_path }}/logs'
+        state: link
+      tags:
+        - paths
+
+    - name: Ensure webservice is started
+      command: >
+        webservice --backend=kubernetes php7.2 start
+      register: webservice_start
+      ignore_errors: yes
+      changed_when: "'already running' not in webservice_start.stdout"
+      failed_when:
+        - "'already running' not in webservice_start.stdout"
+        - "'Starting webservice' not in webservice_start.stdout"
+      tags:
+        - webservice

@@ -1,0 +1,5 @@
+[toolforge]
+login-stretch.tools.wmflabs.org
+
+[toolforge:vars]
+ansible_python_interpreter="/data/project/wudele/.venv/bin/python"

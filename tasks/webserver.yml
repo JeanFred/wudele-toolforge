@@ -1,0 +1,34 @@
+- name: Deploy Lighttpd config
+  template:
+    src: "files/lighttpd.conf.j2"
+    dest: "{{ base_path }}/.lighttpd.conf"
+  tags:
+    - config
+    - lighttpd
+  notify:
+    - Restart webservice
+
+- name: Manually create the initial virtualenv
+  command:
+    cmd: virtualenv {{ venv_path }} -p python3.5
+    creates: "{{ venv_path }}"
+  tags:
+    - pip
+
+- name: Install passlib for htaccess
+  pip:
+    name: passlib
+    virtualenv: "{{ venv_path }}"
+  tags:
+    - pip
+
+- name: Deploy authentication files
+  htpasswd:
+    path: "{{ base_path }}/.passwdfile"
+    name: 3BBEqinYElJuBLNv
+    password: 'Koeg1oMycIBbm7vJJ+p+gzYdysBkrtJSzcaZQOwDZ3rpbzV6/06BdA=='
+    mode: 0640
+  tags:
+    - lighttpd
+    - pip
+    - auth

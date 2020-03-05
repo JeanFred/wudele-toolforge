@@ -1,0 +1,15 @@
+- name: Copy composer.json file
+  copy:
+    src: composer.json
+    dest: '{{ src_path }}/composer.json'
+  tags:
+    - dependencies
+
+- name: Install composer dependencies
+  composer:
+    command: install
+    working_dir: "{{ src_path }}"
+  tags:
+    - dependencies
+  notify:
+    - Restart webservice
