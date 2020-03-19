@@ -95,9 +95,9 @@ $config = [
         'port' => 25,                       // TCP port to connect to
     ],
     /* home */
-    'show_what_is_that' => true,            // display "how to use" section
-    'show_the_software' => true,            // display technical information about the software
-    'show_cultivate_your_garden' => true,   // display "development and administration" information
+    'show_what_is_that' => false,            // display "how to use" section
+    'show_the_software' => false,            // display technical information about the software
+    'show_cultivate_your_garden' => false,   // display "development and administration" information
     /* create_classic_poll.php / create_date_poll.php */
     'default_poll_duration' => 180,         // default values for the new poll duration (number of days).
     /* create_classic_poll.php */
