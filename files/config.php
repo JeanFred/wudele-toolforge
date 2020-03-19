@@ -62,7 +62,7 @@ $ALLOWED_LANGUAGES = [
 ];
 
 // Path to image file with the title
-const IMAGE_TITRE = 'images/logo-framadate.png';
+const IMAGE_TITRE = '/images/logo-wudele.png';
 
 // Clean URLs, boolean
 define('URL_PROPRE', $clean_urls);
