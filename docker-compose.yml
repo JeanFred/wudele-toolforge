@@ -12,6 +12,11 @@ services:
         ports:
             - "3307:3306"
 
+    smtp:
+        image: jeanberu/mailcatcher
+        ports:
+          - "1080:1080"
+
     web:
         build:
             dockerfile: conf/Dockerfile
@@ -22,6 +27,8 @@ services:
             - ENV=dev
             - APACHE_RUN_USER=#1000
             - DB_HOST=db
+            - MAIL_HOST=smtp
+            - MAIL_PORT=1080
         restart: always
         ports:
             - 8000:80

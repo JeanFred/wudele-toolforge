@@ -82,17 +82,20 @@ const MAX_SLOTS_PER_POLL = 366;
 // Number of seconds before we allow to resend an "Remember Edit Link" email.
 const TIME_EDIT_LINK_EMAIL = 60;
 
+$mail_host = getenv('MAIL_HOST') ? getenv('MAIL_HOST') : 'localhost';
+$mail_port = getenv('MAIL_PORT') ? getenv('MAIL_PORT') : 25;
+
 // Config
 $config = [
     /* general config */
     'use_smtp' => true,                     // use email for polls creation/modification/responses notification
     'smtp_options' => [
-        'host' => 'localhost',              // SMTP server (you could add many servers (main and backup for example) : use ";" like separator
+        'host' => $mail_host,               // SMTP server (you could add many servers (main and backup for example) : use ";" like separator
         'auth' => false,                    // Enable SMTP authentication
         'username' => '',                   // SMTP username
         'password' => '',                   // SMTP password
         'secure' => '',                     // Enable encryption (false, tls or ssl)
-        'port' => 25,                       // TCP port to connect to
+        'port' => $mail_port,               // TCP port to connect to
     ],
     /* home */
     'show_what_is_that' => false,            // display "how to use" section
