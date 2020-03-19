@@ -33,6 +33,7 @@ services:
         ports:
             - 8000:80
         volumes:
+          - ./files/MailService.php:/var/www/html/wudele/app/classes/Framadate/Services/MailService.php
           - ./files/config.php:/var/www/html/wudele/app/inc/config.php
           - ./conf/variables.php:/var/www/html/wudele/app/inc/variables.php
           - ./conf/my.cnf:/my.cnf
