@@ -9,5 +9,6 @@ matrix:
     - services: docker
       script:
         - docker-compose up -d
+        - sleep 15
         - curl --silent localhost:8000/wudele/admin/ |grep --quiet "<title>Administration - Wudele</title>"
         - docker-compose down
