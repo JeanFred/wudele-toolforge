@@ -71,7 +71,7 @@ define('URL_PROPRE', $clean_urls);
 const USE_REMOTE_USER =  true;
 
 // Path to the log file
-const LOG_FILE = 'admin/stdout.log';
+const LOG_FILE = 'logs/stdout.log';
 
 // Days (after expiration date) before purging a poll
 const PURGE_DELAY = 60;

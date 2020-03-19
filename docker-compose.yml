@@ -36,3 +36,4 @@ services:
           - ./files/config.php:/var/www/html/wudele/app/inc/config.php
           - ./conf/variables.php:/var/www/html/wudele/app/inc/variables.php
           - ./conf/my.cnf:/my.cnf
+          - ./logs/:/var/www/html/wudele/logs/
