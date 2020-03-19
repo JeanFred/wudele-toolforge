@@ -28,7 +28,7 @@ services:
             - APACHE_RUN_USER=#1000
             - DB_HOST=db
             - MAIL_HOST=smtp
-            - MAIL_PORT=1080
+            - MAIL_PORT=1025
         restart: always
         ports:
             - 8000:80
