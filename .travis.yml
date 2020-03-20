@@ -1,12 +1,28 @@
-matrix:
+language: python
+python: 3.5
+install:
+  - pip install tox
+env:
+  jobs:
+    - TOXENV=yamllint
+    - TOXENV=ansible
+    - TOXENV=ansible-lint
+script:
+  - tox -e $TOXENV
+
+jobs:
   include:
     - language: php
       php: 7.2
+      env:
+      install:
       script:
         - composer --ansi validate --no-check-publish
         - composer install --no-progress --prefer-dist
 
     - services: docker
+      env:
+      install:
       script:
         - docker-compose up -d
         - sleep 15
@@ -14,14 +30,3 @@ matrix:
           curl --silent localhost:8000/wudele/admin/ \
            | grep --quiet "<title>Administration - Wudele</title>"
         - docker-compose down
-
-    - language: python
-      python: 3.5
-      install:
-        - pip install tox
-      env:
-        - TOXENV=yamllint
-        - TOXENV=ansible
-        - TOXENV=ansible-lint
-      script:
-        - tox -e $TOXENV
