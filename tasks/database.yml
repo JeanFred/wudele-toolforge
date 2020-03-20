@@ -1,0 +1,20 @@
+- name: alias database cnf file as local facts file
+  file:
+    src: '{{ database_config_file }}'
+    path: '{{ base_path }}/database.fact'
+    state: link
+
+- name: collect database info from the local facts file
+  setup:
+    fact_path: "{{ base_path }}"
+    gather_subset: "!all"
+
+- name: create database
+  mysql_db:
+    name: "{{ ansible_local['database']['client']['user'] }}__wudele"
+    state: present
+    encoding: utf8mb4
+    collation: utf8mb4_unicode_ci
+    login_host: tools.db.svc.eqiad.wmflabs
+    config_file: '{{ database_config_file }}'
+  register: database

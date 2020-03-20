@@ -4,3 +4,9 @@
 
   vars:
     ansible_python_interpreter: "{{ venv_path }}/bin/python"
+    database_config_file: '{{ base_path }}/replica.my.cnf'
+
+  tasks:
+
+    - import_tasks: tasks/database.yml
+      tags: database

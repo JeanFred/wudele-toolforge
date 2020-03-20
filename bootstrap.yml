@@ -4,10 +4,13 @@
 
   tasks:
 
-    - name: Create virtual environment with passlib
+    - name: Create virtual environment with Ansible requirements
       pip:
-        name: passlib
+        name: '{{ item }}'
         virtualenv: "{{ venv_path }}"
         virtualenv_python: python3.5
+      loop:
+        - passlib
+        - PyMySQL
       tags:
         - bootstrap
