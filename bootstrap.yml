@@ -1,0 +1,13 @@
+---
+- hosts: toolforge
+  gather_facts: false
+
+  tasks:
+
+    - name: Create virtual environment with passlib
+      pip:
+        name: passlib
+        virtualenv: "{{ venv_path }}"
+        virtualenv_python: python3.5
+      tags:
+        - bootstrap

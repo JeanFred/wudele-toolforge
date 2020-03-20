@@ -21,5 +21,7 @@ matrix:
         - pip install tox
       env:
         - TOXENV=yamllint
+        - TOXENV=ansible
+        - TOXENV=ansible-lint
       script:
         - tox -e $TOXENV
