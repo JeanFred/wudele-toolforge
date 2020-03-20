@@ -15,7 +15,7 @@ services:
     smtp:
         image: jeanberu/mailcatcher
         ports:
-          - "1080:1080"
+            - "1080:1080"
 
     web:
         build:
@@ -33,9 +33,9 @@ services:
         ports:
             - 8000:80
         volumes:
-          - ./files/MailService.php:/var/www/html/wudele/app/classes/Framadate/Services/MailService.php
-          - ./files/config.php:/var/www/html/wudele/app/inc/config.php
-          - ./conf/variables.php:/var/www/html/wudele/app/inc/variables.php
-          - ./conf/my.cnf:/my.cnf
-          - ./files/logo-wudele.png:/var/www/html/wudele/images/logo-wudele.png
-          - ./logs/:/var/www/html/wudele/logs/
+            - ./files/MailService.php:/var/www/html/wudele/app/classes/Framadate/Services/MailService.php
+            - ./files/config.php:/var/www/html/wudele/app/inc/config.php
+            - ./conf/variables.php:/var/www/html/wudele/app/inc/variables.php
+            - ./conf/my.cnf:/my.cnf
+            - ./files/logo-wudele.png:/var/www/html/wudele/images/logo-wudele.png
+            - ./logs/:/var/www/html/wudele/logs/
