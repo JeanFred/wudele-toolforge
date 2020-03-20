@@ -9,3 +9,8 @@
 
     - import_tasks: tasks/database.yml
       tags: database
+
+    - import_tasks: tasks/application-install.yml
+      tags: application-install
+      vars:
+        src_path: "{{ base_path }}/src"

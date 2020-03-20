@@ -1,0 +1,20 @@
+- name: create source path
+  file:
+    path: '{{ src_path }}'
+    state: directory
+  tags:
+    - paths
+
+- name: copy composer.json file
+  copy:
+    src: composer.json
+    dest: '{{ src_path }}/composer.json'
+  tags:
+    - composer
+
+- name: install composer dependencies
+  composer:
+    command: install
+    working_dir: '{{ src_path }}'
+  tags:
+    - composer
