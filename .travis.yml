@@ -10,5 +10,16 @@ matrix:
       script:
         - docker-compose up -d
         - sleep 15
-        - curl --silent localhost:8000/wudele/admin/ |grep --quiet "<title>Administration - Wudele</title>"
+        - >
+          curl --silent localhost:8000/wudele/admin/ \
+           | grep --quiet "<title>Administration - Wudele</title>"
         - docker-compose down
+
+    - language: python
+      python: 3.5
+      install:
+        - pip install tox
+      env:
+        - TOXENV=yamllint
+      script:
+        - tox -e $TOXENV
