@@ -5,3 +5,4 @@ login-stretch.tools.wmflabs.org
 tool_name='wudele'
 base_path='/data/project/{{ tool_name }}'
 venv_path='{{ base_path }}/.venv/'
+ansible_python_interpreter='{{ venv_path }}/bin/python'

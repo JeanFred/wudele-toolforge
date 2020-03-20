@@ -2,6 +2,9 @@
 - hosts: toolforge
   gather_facts: false
 
+  vars:
+    ansible_python_interpreter: auto
+
   tasks:
 
     - name: Create virtual environment with Ansible requirements
