@@ -30,7 +30,7 @@ define('ADRESSEMAILADMIN', $email_address);
 // Email for automatic responses (you should set it to "no-reply")
 const ADRESSEMAILREPONSEAUTO = '';
 
-$db_host = getenv('DB_HOST');
+$db_host = getenv('DB_HOST') ? getenv('DB_HOST') : 'tools.db.svc.eqiad.wmflabs';
 $db_port = 3306;
 define('DB_CONNECTION_STRING', "mysql:host=$db_host;dbname=$db_name;port=$db_port");
 
@@ -82,7 +82,7 @@ const MAX_SLOTS_PER_POLL = 366;
 // Number of seconds before we allow to resend an "Remember Edit Link" email.
 const TIME_EDIT_LINK_EMAIL = 60;
 
-$mail_host = getenv('MAIL_HOST') ? getenv('MAIL_HOST') : 'localhost';
+$mail_host = getenv('MAIL_HOST') ? getenv('MAIL_HOST') : 'mail.tools.wmflabs.org';
 $mail_port = getenv('MAIL_PORT') ? getenv('MAIL_PORT') : 25;
 
 // Config
