@@ -14,3 +14,9 @@
       tags: application-install
       vars:
         src_path: "{{ base_path }}/src"
+
+    - import_tasks: tasks/application-config.yml
+      tags: application-config
+      vars:
+        src_path: "{{ base_path }}/src"
+        app_path: "{{ src_path }}/vendor/framasoft/framadate"

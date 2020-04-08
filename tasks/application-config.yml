@@ -1,0 +1,16 @@
+- name: deploy custom application files
+  template:
+    src: "files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    validate: php -l %s
+  loop:
+    - {src: 'variables.php.j2', dest: "{{ app_path }}/app/inc/variables.php"}
+    - {src: 'config.php', dest: "{{ app_path }}/app/inc/config.php"}
+    - {src: 'MailService.php', dest: "{{ app_path }}/app/classes/Framadate/Services/MailService.php"}
+
+- name: deploy custom static files
+  copy:
+    src: "files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+  loop:
+    - {src: 'logo-wudele.png', dest: "{{ app_path }}/images/"}
