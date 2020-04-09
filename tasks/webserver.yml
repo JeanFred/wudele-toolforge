@@ -1,0 +1,11 @@
+- name: Deploy authentication file
+  htpasswd:
+    path: "{{ passwdfile_path }}"
+    name: "{{ admin_user }}"
+    password: "{{ admin_password }}"
+    mode: 0640
+
+- name: Deploy Lighttpd config
+  template:
+    src: "files/lighttpd.conf.j2"
+    dest: "{{ base_path }}/.lighttpd.conf"
