@@ -6,3 +6,14 @@
     line: \1 '';
     backrefs: true
     validate: php -l %s
+
+# https://framagit.org/framasoft/framadate/framadate/-/merge_requests/358
+- name: Patch create_date_poll for e-mail subject
+  replace:
+    path: "{{ app_path }}/create_date_poll.php"
+    regexp: '{{ item.regexp }}'
+    replace: '{{ item.replace }}'
+    validate: php -l %s
+  loop:
+    - {regexp: "Message for the author", replace: "Author\\'s message"}
+    - {regexp: "Participant link", replace: "For sending to the polled users"}
