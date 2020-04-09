@@ -1,0 +1,8 @@
+- name: Alter get_server_name to avoid wrong port detection
+  lineinfile:
+    path: "{{ app_path }}/app/classes/Framadate/Utils.php"
+    state: present
+    regexp: '^(\s+\$port\s+=)'
+    line: \1 '';
+    backrefs: true
+    validate: php -l %s

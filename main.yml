@@ -20,3 +20,9 @@
       vars:
         src_path: "{{ base_path }}/src"
         app_path: "{{ src_path }}/vendor/framasoft/framadate"
+
+    - import_tasks: tasks/application-patch.yml
+      tags: application-patch
+      vars:
+        src_path: "{{ base_path }}/src"
+        app_path: "{{ src_path }}/vendor/framasoft/framadate"
