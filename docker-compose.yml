@@ -35,6 +35,8 @@ services:
         volumes:
             - ./files/MailService.php:/var/www/html/wudele/app/classes/Framadate/Services/MailService.php
             - ./files/config.php:/var/www/html/wudele/app/inc/config.php
+            - ./files/locale/en.json:/var/www/html/wudele/locale/en.json
+            - ./files/locale/de.json:/var/www/html/wudele/locale/de.json
             - ./conf/variables.php:/var/www/html/wudele/app/inc/variables.php
             - ./conf/my.cnf:/my.cnf
             - ./files/logo-wudele.png:/var/www/html/wudele/images/logo-wudele.png

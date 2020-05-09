@@ -17,3 +17,12 @@
   loop:
     - {regexp: "Message for the author", replace: "Author\\'s message"}
     - {regexp: "Participant link", replace: "For sending to the polled users"}
+
+# https://framagit.org/framasoft/framadate/framadate/-/issues/363
+- name: Patch locale for expiration date
+  copy:
+    src: "{{ item }}"
+    dest: "{{ app_path }}/locale/"
+    validate: python -m json.tool %s
+  with_fileglob:
+    - "files/locale/*.json"
