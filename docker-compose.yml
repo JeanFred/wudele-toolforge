@@ -11,6 +11,11 @@ services:
         restart: always
         ports:
             - "3307:3306"
+        command:
+          - --character-set-server=utf8mb4
+          - --collation-server=utf8mb4_unicode_ci
+          - --skip-character-set-client-handshake
+          - --sql_mode=NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
 
     smtp:
         image: jeanberu/mailcatcher
@@ -33,7 +38,7 @@ services:
         ports:
             - 8000:80
         volumes:
-            - ./files/MailService.php:/var/www/html/wudele/app/classes/Framadate/Services/MailService.php
+            # - ./files/MailService.php:/var/www/html/wudele/app/classes/Framadate/Services/MailService.php
             - ./files/config.php:/var/www/html/wudele/app/inc/config.php
             - ./conf/variables.php:/var/www/html/wudele/app/inc/variables.php
             - ./conf/my.cnf:/my.cnf
