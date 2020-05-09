@@ -88,8 +88,8 @@
    },
    "Date": {
       "Add range dates": "Add range dates",
-      "DATE": "%Y-%m-%d",
-      "DATETIME": "%m/%d/%Y %H:%M",
+      "DATE": "%d/%m/%Y",
+      "DATETIME": "%d-%m-%Y %H:%M",
       "DAY": "%a %e",
       "End date": "End date",
       "FULL": "%A, %B %e, %Y",
@@ -97,9 +97,9 @@
       "Max dates count": "You can select at most 4 months",
       "SHORT": "%A %e %B %Y",
       "Start date": "Start date",
-      "datepicker": "yyyy-mm-dd",
-      "datetime_parseformat": "Y-m-d",
-      "dd/mm/yyyy": "yyyy-mm-dd"
+      "datepicker": "dd/mm/yyyy",
+      "datetime_parseformat": "d/m/Y",
+      "dd/mm/yyyy": "dd/mm/yyyy"
    },
    "EditLink": {
       "Edit link for poll \"%s\"": "Edit link for poll \"%s\"",
