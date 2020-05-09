@@ -3,7 +3,7 @@ server.modules += ("mod_auth", "mod_authn_file")
 $HTTP["url"] =~ "^/{{ tool_name }}/admin/" {
   auth.backend = "htpasswd"
   auth.backend.htpasswd.userfile = "{{ passwdfile_path }}"
-  auth.require = ("/{{ tool_name }}/admin/" => (
+  auth.require = ("" => (
      "method"  => "basic",
      "realm"   => "admin",
      "require" => "valid-user"
