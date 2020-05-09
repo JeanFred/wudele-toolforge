@@ -88,7 +88,7 @@ $mail_port = getenv('MAIL_PORT') ? getenv('MAIL_PORT') : 25;
 // Config
 $config = [
     /* general config */
-    'use_smtp' => true,                     // use email for polls creation/modification/responses notification
+    'use_smtp' => false,                     // use email for polls creation/modification/responses notification
     'smtp_options' => [
         'host' => $mail_host,               // SMTP server (you could add many servers (main and backup for example) : use ";" like separator
         'auth' => false,                    // Enable SMTP authentication
