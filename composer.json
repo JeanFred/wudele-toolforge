@@ -2,23 +2,13 @@
   "description": "A deployment of Framadate on the Wikimedia Cloud Toolforge",
   "repositories": [
     {
-      "type": "package",
-      "package": {
-        "name": "framasoft/framadate",
-        "version": "1.1.10",
-        "dist": {
-          "url": "https://framagit.org/framasoft/framadate/framadate/uploads/267cf0e390950019c5176bd2cf6da865/framadate-1.1.10.zip",
-          "type": "zip"
-        },
-        "source": {
-          "url": "https://framagit.org/framasoft/framadate/framadate.git",
-          "type": "git",
-          "reference": "tags/1.1.10"
-        }
-      }
+      "type": "git",
+      "url": "https://framagit.org/framasoft/framadate/framadate.git"
     }
   ],
   "require": {
-    "framasoft/framadate": "1.1.10"
-  }
+    "framasoft/framadate": "v1.2.0-alpha.1"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }

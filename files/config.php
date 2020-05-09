@@ -30,9 +30,17 @@ define('ADRESSEMAILADMIN', $email_address);
 // Email for automatic responses (you should set it to "no-reply")
 const ADRESSEMAILREPONSEAUTO = '';
 
-$db_host = getenv('DB_HOST') ? getenv('DB_HOST') : 'tools.db.svc.eqiad.wmflabs';
-$db_port = 3306;
-define('DB_CONNECTION_STRING', "mysql:host=$db_host;dbname=$db_name;port=$db_port");
+// Database driver
+const DB_DRIVER = 'pdo_mysql';
+
+// Database host
+define('DB_HOST', getenv('DB_HOST') ? getenv('DB_HOST') : 'tools.db.svc.eqiad.wmflabs');
+
+// Database port
+const DB_PORT = 3306;
+
+// Database name
+define('DB_NAME', $db_name);
 
 // Database user
 define('DB_USER', $db_settings['user']);
@@ -59,6 +67,7 @@ $ALLOWED_LANGUAGES = [
     'nl' => 'Dutch',
     'it' => 'Italiano',
     'br' => 'Brezhoneg',
+    'hu' => 'Magyar',
 ];
 
 // Path to image file with the title

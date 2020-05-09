@@ -20,3 +20,4 @@ RUN composer install
 WORKDIR /var/www/html/
 
 RUN ln -s /app/vendor/framasoft/framadate/ wudele
+RUN ln -s /app/vendor/ /app/vendor/framasoft/framadate/vendor
