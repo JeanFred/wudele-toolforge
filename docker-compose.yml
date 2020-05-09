@@ -2,7 +2,7 @@ version: '3'
 services:
 
     db:
-        image: mariadb:10.0
+        image: mariadb:10.1.39
         environment:
             - MYSQL_RANDOM_ROOT_PASSWORD=true
             - MYSQL_USER=s_user
