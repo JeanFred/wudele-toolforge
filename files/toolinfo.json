@@ -1,0 +1,11 @@
+[
+    {
+      "name" : "wudele",
+      "title" : "Wudele",
+      "description" : "Schedule an event or make a poll",
+      "url" : "https://wudele.toolforge.org/",
+      "keywords" : "framadate, doodle, polls, schedule",
+      "author" : "JeanFred",
+      "repository" : "https://github.com/JeanFred/wudele-toolforge"
+    }
+]

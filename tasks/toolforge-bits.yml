@@ -1,0 +1,11 @@
+- name: create source path
+  file:
+    path: '{{ static_path }}'
+    state: directory
+
+- name: deploy toolinfo.json static files
+  copy:
+    src: "files/toolinfo.json"
+    dest: "{{ static_path }}"
+  loop:
+    - 'toolinfo.json'

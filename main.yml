@@ -47,3 +47,8 @@
       tags: webserver
       vars:
         passwdfile_path: "{{ base_path }}/.passwdfile"
+
+    - import_tasks: tasks/toolforge-bits.yml
+      tags: toolforge
+      vars:
+        static_path: "{{ base_path }}/www/static"
