@@ -13,11 +13,11 @@ $HTTP["url"] =~ "^(?:/{{ tool_name }})?/admin/" {
 url.rewrite-once += (
     "^/({{ tool_name }}/|)admin$" => "/$1/admin/",
 
-    "^/({{ tool_name }}/|)([a-zA-Z0-9-]+)$"                           => "/$1studs.php?poll=$2",
-    "^/({{ tool_name }}/|)([a-zA-Z0-9-]+)/action/([a-zA-Z_-]+)/(.+)$" => "/$1studs.php?poll=$2&$3=$4",
-    "^/({{ tool_name }}/|)([a-zA-Z0-9-]+)/vote/([a-zA-Z0-9]{16})$"    => "/$1studs.php?poll=$2&vote=$3",
+    "^/({{ tool_name }}/|)([a-zA-Z0-9-]+)(?:(?:\?|\&).*)?$"                           => "/$1studs.php?poll=$2",
+    "^/({{ tool_name }}/|)([a-zA-Z0-9-]+)/action/([a-zA-Z_-]+)/(.+)(?:(?:\?|\&).*)?$" => "/$1studs.php?poll=$2&$3=$4",
+    "^/({{ tool_name }}/|)([a-zA-Z0-9-]+)/vote/([a-zA-Z0-9]{16})(?:(?:\?|\&).*)?$"    => "/$1studs.php?poll=$2&vote=$3",
 
-    "^/({{ tool_name }}/|)([a-zA-Z0-9-]{24})/admin$"                              => "/$1adminstuds.php?poll=$2",
-    "^/({{ tool_name }}/|)([a-zA-Z0-9-]{24})/admin/vote/([a-zA-Z0-9]{16})$"       => "/$1adminstuds.php?poll=$2&vote=$3",
-    "^/({{ tool_name }}/|)([a-zA-Z0-9-]{24})/admin/action/([a-zA-Z_-]+)(/(.+))?$" => "/$1adminstuds.php?poll=$2&$4=$5"
+    "^/({{ tool_name }}/|)([a-zA-Z0-9-]{24})/admin(?:(?:\?|\&).*)?$"                              => "/$1adminstuds.php?poll=$2",
+    "^/({{ tool_name }}/|)([a-zA-Z0-9-]{24})/admin/vote/([a-zA-Z0-9]{16})(?:(?:\?|\&).*)?$"       => "/$1adminstuds.php?poll=$2&vote=$3",
+    "^/({{ tool_name }}/|)([a-zA-Z0-9-]{24})/admin/action/([a-zA-Z_-]+)(/(.+))?(?:(?:\?|\&).*)?$" => "/$1adminstuds.php?poll=$2&$4=$5"
 )
