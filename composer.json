@@ -5,20 +5,20 @@
       "type": "package",
       "package": {
         "name": "framasoft/framadate",
-        "version": "1.1.10",
+        "version": "1.1.19",
         "dist": {
-          "url": "https://framagit.org/framasoft/framadate/framadate/uploads/267cf0e390950019c5176bd2cf6da865/framadate-1.1.10.zip",
+          "url": "https://packages.framasoft.org/projects/framadate/framadate-1.1.19.zip",
           "type": "zip"
         },
         "source": {
           "url": "https://framagit.org/framasoft/framadate/framadate.git",
           "type": "git",
-          "reference": "tags/1.1.10"
+          "reference": "tags/1.1.19"
         }
       }
     }
   ],
   "require": {
-    "framasoft/framadate": "1.1.10"
+    "framasoft/framadate": "1.1.19"
   }
 }

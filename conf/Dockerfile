@@ -8,7 +8,7 @@ RUN apt-get update \
 		libicu-dev \
 	&& apt-get clean
 
-RUN docker-php-ext-install intl && docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install intl && docker-php-ext-install pdo_mysql mbstring
 
 WORKDIR /app/
 
